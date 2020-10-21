@@ -1,16 +1,23 @@
 # Description of wifi_sensor
 
-ROS package to use the RSSI of a wifi card as a sensor. Measurements are pulished to the `rssi` topic.
+ROS package to use the RSSI of a wifi card as a sensor. 
+Measurements are pulished to the `/wifi` topic.
 
-## Parameters
-
-* `string` adapter
-* `int` channel
-* `int` rate (Hz)
 
 ## Notes
+You must make the permissions on the file wifi_sensor.py executable.
 
-This has to be run as root because it needs access to raw sockets and to be
-able to switch the adapter to monitor mode. One way to do this, is to use the
-`<machine>` xml tag for roslaunch and log in as root and then use the `env.sh`
-script to start it with the correct environment.
+You have to do these things so that you can use the wifi as a sensor in ros.
+
+1. mkdir wifi_ws
+2. cd mkdir wifi_ws
+3. mkdir src
+4. cd src
+5. git clone https://github.com/bryantaoli/wifi_sensor
+6. cd ..
+7. catkin_make
+8. sudo su
+9. pip install pywifi
+10. In another terminal, you should start a roscore.
+11. rosrun wifi_sensor wifi_sensor.py
+
